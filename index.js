@@ -1,12 +1,11 @@
 // TODO:
-// - compartmentalize pagination
 // - add function for adding issues to a ticket
 //   - one ticket for each issue?
 //   - one ticket with checkboxes?
 //   - add body of issue to ticket?
 // - add daysAgo as argv
 
-  const octokit = require('@octokit/rest')();
+const octokit = require('@octokit/rest')();
 
 async function paginate (method) {
   let response = await method({per_page: 100});
@@ -18,12 +17,13 @@ async function paginate (method) {
   return data;
 }
 
-octokit.repos.getPublicMembers({
-  org: 'mapbox',
-  type: 'public'
-}).then(({data, headers, status}) => {
+function getPublicMembers() {
+  return octokit.orgs.getPublicMembers({org: 'mapbox'});
+}
+
+paginate(getPublicMembers).then(data => {
   console.log(data);
-});
+}).catch(console.error);
 
 var GitHubApi = require("github");
 
