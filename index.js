@@ -6,6 +6,25 @@
 //   - add body of issue to ticket?
 // - add daysAgo as argv
 
+  const octokit = require('@octokit/rest')();
+
+async function paginate (method) {
+  let response = await method({per_page: 100});
+  let {data} = response;
+  while (octokit.hasNextPage(response)) {
+    response = await octokit.getNextPage(response);
+    data = data.concat(response.data);
+  }
+  return data;
+}
+
+octokit.repos.getPublicMembers({
+  org: 'mapbox',
+  type: 'public'
+}).then(({data, headers, status}) => {
+  console.log(data);
+});
+
 var GitHubApi = require("github");
 
 var github = new GitHubApi({
