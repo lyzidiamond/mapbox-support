@@ -1,0 +1,19 @@
+{
+  "name": "mapbox-support",
+  "version": "0.0.1",
+  "description": "A little script for listing support tickets on Mapbox GitHub repos. VERY much a work-in-progress.",
+  "main": "cli.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyzidiamond/mapbox-support.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lyzidiamond/mapbox-support/issues"
+  },
+  "homepage": "https://github.com/lyzidiamond/mapbox-support#readme"
+}
